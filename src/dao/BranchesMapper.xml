@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org//dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.BranchesMapper">
+    <select id="queryAllBranches" resultType="Branches">
+        SELECT `id`,`businessNo`,`name`,`cityArea`,`address`,`telephone`,`summary` FROM `branches`
+    </select>
+
+    <select id="queryBranchesById" resultType="Branches">
+        SELECT `id`,`businessNo`,`name`,`cityArea`,`address`,`telephone`,`summary` FROM `branches` WHERE `id`=#{id}
+    </select>
+
+    <select id="queryBranchesByBusNo" resultType="Branches">
+        SELECT `id`,`businessNo`,`name`,`cityArea`,`address`,`telephone`,`summary` FROM `branches` WHERE `businessNo`=#{businessNo}
+    </select>
+
+    <insert id="addBranch" parameterType="Branches">
+        INSERT INTO `branches`(`businessNo`,`name`,`cityArea`,`address`,`telephone`,`summary`) "
+        + "VALUES(#{businessNo},#{name},#{cityArea},#{address},#{telephone},#{summary})
+    </insert>
+</mapper>
